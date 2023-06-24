@@ -1,0 +1,38 @@
+<div class="view">
+    <div class="banner"></div>
+    <div class="mask flex-center rgba-black-strong">
+        <h1 class="text-light">{{ page?.Name }}</h1>
+    </div>
+</div>
+<div class="container my-4">
+    <div>
+        <div class="uv-courses-2">
+            <div class="row">
+                <div *ngFor="let f of page?.formations" class="col-md-3 col-sm-6 ">
+                    <div class="uv-courese-single-thumb uv-shadow formation">
+                        <div class="uv-post-img">
+                            <img src="http://localhost:3000/{{ f?.image }}" alt="" class="img-responsive">
+                            <div class="uv-post-author">
+                            </div>
+                        </div>
+                        <div class="uv-course-thumb-inner flex-center">
+                            <a [routerLink]="['/formation/', page?.Name,f?._id]" *ngIf="page">
+                                <h4>{{ f?.Name }}</h4>
+                                <p class="desc">{{ f?.Description }}</p>
+                            </a>
+                        </div>
+                        <ul class="course-info-2">
+                            <li class="course-info-2 flex-center">
+                                <span>{{ f?.Price }} TND</span>
+                            </li>
+                            <li class="uv-course-rating">
+                                <i class="far fa-calendar-alt"></i>
+                                <span> {{ f?.durationInMonths }} TND</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

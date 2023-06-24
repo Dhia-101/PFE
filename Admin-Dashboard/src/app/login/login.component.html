@@ -1,0 +1,31 @@
+<div class="container mt-5">
+    <form #f="ngForm" (ngSubmit)="submit(f)">
+        <h1 class="text-center" style="color: blue;">
+            <span style="color: red;">INFO</span>PLUS
+        </h1>
+        <div class="form-group">
+            <label for="Email">Adresse E-mail</label>
+            <input required minlength="10" maxlength="150" ngModel #Email="ngModel" type="Email" class="form-control"
+                name="Email" id="Email">
+        </div>
+        <div class="form-group">
+            <label for="password">Mot de Passe</label>
+            <input required minlength="5" maxlength="150" ngModel #password="ngModel" type="password"
+                class="form-control" name="password" id="password">
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="f.invalid || f.errors">Login</button>
+        <div class="alert alert-danger mt-2" *ngIf="!Email.valid && Email.touched">
+            <div *ngIf="Email.errors && Email.errors.required">E-mail est obligatoire.</div>
+            <div *ngIf="Email.errors  && Email.errors.minlength">E-mail doit contenir au moins 10 caractères.</div>
+        </div>
+        <div class="alert alert-danger mt-2" *ngIf="!password.valid && password.touched">
+            <div *ngIf="password.errors && password.errors.required">Mot de Passe est obligatoire.</div>
+            <div *ngIf="password.errors  && password.errors.minlength">Mot de Passe doit contenir au moins 5 caractères.
+            </div>
+        </div>
+        <div class="alert alert-danger mt-2" *ngIf="f.form.errors?.invalidMailorPass && f.touched">
+            <div *ngIf="f.form.errors?.invalidMailorPass">email ou mot de passe invalide.</div>
+            <!-- <div *ngIf="f.form.errors?.unknownError">Unknown Error occured.</div> -->
+        </div>
+    </form>
+</div>

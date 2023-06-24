@@ -1,0 +1,44 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark blue-grey darken-3 sticky-top" [containerInside]="false">
+
+    <!-- Navbar brand -->
+    <mdb-navbar-brand><a class="navbar-brand" href="/">InfoPlus</a></mdb-navbar-brand>
+
+    <!-- Collapsible content -->
+    <links>
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+            <li *ngFor="let m of menus" class="nav-item dropdown" dropdown>
+                <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light"
+                    mdbWavesEffect>
+                    {{ m?.Name }}<span class="caret" *ngIf="m?.items?.length != 0"></span></a>
+                <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                    <a class="dropdown-item waves-light" mdbWavesEffect *ngFor="let item of m?.items "
+                        [routerLink]="['/formations/', item.Page]">
+                        {{ item?.Name }} </a>
+                </div>
+            <li class="nav-item">
+                <a class="nav-link waves-light" routerLink="/contact" mdbWavesEffect>Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light" routerLink="/gallery" mdbWavesEffect>Gallerie</a>
+            </li>
+
+        </ul>
+        <!-- Links -->
+
+        <ul class="navbar-nav ml-auto nav-flex-icons">
+            <li class="nav-item">
+                <a href="http://localhost:4000/">
+                    <button class="btn btn-secondary"> Espace Client <mdb-icon fas icon="user" class="ml-1"
+                            mdbDropdownToggle></mdb-icon>
+                    </button>
+                </a>
+            </li>
+        </ul>
+    </links>
+    <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->
